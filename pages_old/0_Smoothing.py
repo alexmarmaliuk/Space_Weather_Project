@@ -6,10 +6,9 @@ import matplotlib.pyplot as plt
 import statsmodels
 import pandas as pd
 
-from sup import *
+from pages.additional.preprocessing import *
 
 # turn off empty st.pyplot() warning
-
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Page title
@@ -19,7 +18,7 @@ st.title('📊 Smoothing Types')
 st.sidebar.header("Smoothing")
 st.markdown('##### *TODO*: smoothing params for each type.')
 
-base_data = pd.read_csv('filtered.csv')
+base_data = pd.read_csv('pages/app_data/current_data.csv')
 
 def plot_data(selected_data, plot_title=''):
     fig, ax = plt.subplots()
@@ -43,6 +42,9 @@ def plot_data(selected_data, plot_title=''):
     st.pyplot()
     
 selected_option = st.selectbox('Select Smoothing to Apply', ['Savitzky-Golay', 'Exponential', 'Moving Average'])
+   
+   
+   
     
     # Plot selected data
 plot_data(selected_option, selected_option)
