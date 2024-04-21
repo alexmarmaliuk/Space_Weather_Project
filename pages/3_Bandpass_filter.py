@@ -5,6 +5,7 @@ import altair as alt
 
 from pages.additional.preprocessing import *
 from pages.additional.sup import *
+from pages.additional.plotting import *
 
 
 # Page title

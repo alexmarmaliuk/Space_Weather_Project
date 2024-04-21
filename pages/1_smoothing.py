@@ -9,6 +9,7 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from scipy.signal import savgol_filter
 
 from pages.additional.preprocessing import *
+from pages.additional.plotting import *
 
 # turn off empty st.pyplot() warning
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -32,14 +33,6 @@ if (selected_option == 'Moving Average'):
     st.write(f'type = {plot_type}')
     plot_smooth(data.x, data.y, data.y_orig, selected_option, plot_type)
     data.to_csv(datapath)
-    # plt.plot(data.x, data.y, label='Filtered Data')
-    # plt.plot(data.x, data.y_orig, label='Noisy Data')
-    # plt.xlabel('X')
-    # plt.ylabel('Y')
-    # plt.legend()
-    # plt.title(selected_option)
-    # plt.show()
-    # st.pyplot()
 
 elif (selected_option == 'Exponential'):
 
