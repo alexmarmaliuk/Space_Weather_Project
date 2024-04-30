@@ -69,3 +69,6 @@ def plot_single(x, y, label='Plot', type='plotly', y_scale=None, x_scale=None, x
         )
         fig = go.Figure(data=[trace1], layout=layout)
         st.plotly_chart(fig)
+        
+# def plotWavelet():
+    

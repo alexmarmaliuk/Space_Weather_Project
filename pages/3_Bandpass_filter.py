@@ -31,11 +31,11 @@ st.markdown('''
 # plot 2
 
 # Adjusting the sample rate slider
-sr = st.slider('Sample Rate', min_value=200, max_value=4000, value=1000)
+sr = st.slider('Sample Rate', min_value=200, max_value=20000, value=1000)
 
 low, high = st.slider(
     'Select Low and High Cut Frequencies',
-    min_value=500, max_value=4000, value=(50, round(sr/2 - 1)), step=10)
+    min_value=500, max_value=20000, value=(50, round(sr/2 - 1)), step=10)
 
 plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
 
