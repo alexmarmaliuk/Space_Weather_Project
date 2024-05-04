@@ -5,7 +5,7 @@ import pywt
 import waipy
 import altair as alt
 
-from sup import *
+from pages.additional.sup import *
 from pages.additional.plotting import *
 
 # Page title
