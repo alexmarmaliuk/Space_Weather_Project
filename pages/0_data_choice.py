@@ -23,6 +23,11 @@ st.markdown(r'Note 1: It will be centered ($$data := data - \overline{data}$$).'
 st.markdown(r'Note 2: File must inlude a line which starts with "Time" just above data lines.')
 selected_file = st.selectbox("Select file with data:", filenames)
 
+with open(('pages/app_data/data_choice.txt'), 'w') as file:
+    file.write(selected_file)
+    
+st.write(selected_file)
+
 x, y = load_data(os.path.join(data_directory, selected_file))
 y = center_data(y)
 

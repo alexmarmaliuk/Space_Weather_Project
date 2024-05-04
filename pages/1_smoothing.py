@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import altair as alt
 import numpy as np
@@ -17,10 +18,16 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(page_title='Interactive Geomagnetic Field Variations Data Explorer', page_icon='📊')
 st.title('📊 Smoothing Types')
 st.sidebar.header("Smoothing")
-st.markdown('##### *TODO*: smoothing params for each type.')
+# st.markdown('##### *TODO*: smoothing params for each type.')
 
 datapath = 'pages/app_data/current_data.csv'
 data = pd.read_csv(datapath)
+
+with open(('pages/app_data/data_choice.txt'), 'r') as file:
+    data_choice = file.read()
+    
+st.markdown(f'#### Working with **{data_choice}** data.')
+
     
 selected_option = st.selectbox('Select Smoothing to Apply', ['Savitzky-Golay', 'Exponential', 'Moving Average'])
 plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])

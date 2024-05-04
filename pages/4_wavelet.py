@@ -14,6 +14,11 @@ st.title('📊 Demo')
 
 st.sidebar.header("Wavelets")
 
+with open(('pages/app_data/data_choice.txt'), 'r') as file:
+    data_choice = file.read()
+    
+st.markdown(f'#### Working with **{data_choice}** data.')
+
 datapath = 'pages/app_data/current_data.csv'
 data = pd.read_csv(datapath)
 

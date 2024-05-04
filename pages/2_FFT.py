@@ -10,6 +10,11 @@ from pages.additional.plotting import *
 st.set_page_config(page_title='Interactive Geomagnetic Field Variations Data Explorer', page_icon='📊')
 st.title('📊 Demo')
 
+with open(('pages/app_data/data_choice.txt'), 'r') as file:
+    data_choice = file.read()
+    
+st.markdown(f'#### Working with **{data_choice}** data.')
+
 st.sidebar.header("FFT")
 
 plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
