@@ -64,5 +64,4 @@ elif (selected_option == 'Savitzky-Golay'):
     st.write(f'type = {plot_type}')
     plot_smooth(data.x, data.y, data.y_orig, selected_option, plot_type)
     data.to_csv(datapath)
-# data.to_csv('pages/app_data/new_data.csv')
-# st.write(data.columns)
+
