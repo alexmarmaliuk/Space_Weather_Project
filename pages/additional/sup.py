@@ -4,6 +4,7 @@ import scipy as sp
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import fftpack
+import random
 from functools import partial
 from scipy.signal import butter, lfilter
 
@@ -66,3 +67,24 @@ def bandpass(y, fs, lowcut=500.0, highcut=1250.0):
     # lowcut = 500.0
     # highcut = 1250.0
     return butter_bandpass_filter(y, lowcut, highcut, fs = fs)
+
+def generate_samples(
+    x,
+    y,
+    num_samples=1000,
+    noise_std=1,
+):
+    samples = []
+    ffts = []
+    for i in range(num_samples):
+        noisy = y + np.random.normal(0, noise_std, y.shape[0])
+        samples.append(noisy)
+        ffts.append(sp.fft.fft(noisy.values))
+    return np.array(samples), np.array(ffts)
+
+
+def random_color_hex():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return '#{0:02x}{1:02x}{2:02x}'.format(r, g, b)

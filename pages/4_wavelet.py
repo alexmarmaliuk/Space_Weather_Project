@@ -26,7 +26,7 @@ s0 = st.slider('Smallest scale', min_value=1, max_value=4000, value=401, step=1)
 s1 = st.slider('Largest scale', min_value=1, max_value=4000, value=2*s0, step=1)
 ds = st.slider('Scale step', min_value=0.1, max_value=100., value=0.1)
 nvoice = st.slider('octaves / scale', min_value=3, max_value=20, value=6)
-lag = st.number_input(value=1)
+lag = st.number_input(label='autocorrelation', value=1)
 alpha = 6  # Alpha parameter for Morlet wavelet
 mother = 'Morlet'  # Wavelet type
 
