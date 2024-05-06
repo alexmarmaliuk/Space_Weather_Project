@@ -15,12 +15,17 @@ st.markdown(f'#### Working with **{data_choice}** data.')
 datapath = 'pages/app_data/current_data.csv'
 data = pd.read_csv(datapath)
 
+
 y = np.array(data.y)
 x = np.array(data.x)
-sr = st.slider('Sample rate', min_value=100, max_value=24000, value=22050)
+plt.plot(x,y)
+plt.show()
+st.pyplot()
+sr = st.number_input('Sample rate', value=22050, step=1000)
+fft_n = st.select_slider(label='FFT window',options=np.power(2, np.arange(15)), value=1024)
 
 # Compute the mel spectrogram
-S = librosa.feature.melspectrogram(y=y, sr=sr)
+S = librosa.feature.melspectrogram(y=y, sr=sr, n_fft=fft_n)
 
 # Convert to dB (log scale)
 S_dB = librosa.power_to_db(S, ref=np.max)
