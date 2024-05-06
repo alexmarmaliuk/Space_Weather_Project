@@ -4,7 +4,7 @@ import librosa
 import librosa.display
 import matplotlib.pyplot as plt
 import streamlit as st
-import waipy
+# import waipy
 import pandas as pd
 import altair as alt
 
