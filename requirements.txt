@@ -7,4 +7,3 @@ altair
 statsmodels
 waipy
 librosa
-pywt
