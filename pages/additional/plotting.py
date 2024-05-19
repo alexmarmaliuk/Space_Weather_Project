@@ -54,16 +54,16 @@ def plot_single(x, y, label='Plot', type='plotly', y_scale=None, x_scale=None, x
         st.pyplot()
     elif type=='plotly':
         st.write('plotting with plotly...')
-        width = 800
-        height = 600
+        # width = 800
+        # height = 600
         trace1 = go.Scatter(x=x, y=y, mode='lines', )
 
         layout = go.Layout(
             title=label,
             xaxis_title=x_label,
             yaxis_title=y_label,
-            width=width,
-            height=height,
+            # width=width,
+            # height=height,
             legend_title="Legend",
             xaxis_type=x_scale,
             yaxis_type=y_scale,
@@ -114,3 +114,45 @@ def plot_confidence_intervals(
     plt.xscale('log')
     plt.show()
     st.pyplot()
+
+# def plot_confidence_intervals(samples, x, original_fft=None):
+#     means = np.mean(np.abs(samples.real), axis=0)
+#     stds = np.std(np.abs(samples), axis=0)
+#     x = np.abs(x.real)
+#     lower = means - 1.96 * stds
+#     upper = means + 1.96 * stds
+#     fig = go.Figure()
+#     fig.add_trace(go.Scatter(
+#         x=x,
+#         y=np.abs(means),
+#         mode='lines',
+#         name='Mean Amplitude'
+#     ))
+#     fig.add_trace(go.Scatter(
+#         x=np.concatenate([x, x[::-1]]),
+#         y=np.concatenate([np.abs(upper), np.abs(lower)[::-1]]),
+#         fill='toself',
+#         fillcolor='rgba(0,100,80,0.2)',
+#         line=dict(color='rgba(255,255,255,0)'),
+#         hoverinfo="skip",
+#         showlegend=True,
+#         name='95% Confidence Interval'
+#     ))
+#     if original_fft is not None:
+#         fig.add_trace(go.Scatter(
+#             x=x,
+#             y=np.abs(original_fft),
+#             mode='lines',
+#             name='Original',
+#             line=dict(color='red')
+#         ))
+#     fig.update_layout(
+#         yaxis_type="log",
+#         xaxis_type="log",
+#         title="Confidence Intervals Plot",
+#         xaxis_title="X-axis",
+#         yaxis_title="Amplitude",
+#         legend=dict(x=0, y=1),
+#         hovermode="x"
+#     )
+#     st.plotly_chart(fig)

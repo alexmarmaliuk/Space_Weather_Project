@@ -33,6 +33,6 @@ sample_rate = 24 * 60
 xf = sp.fft.fftfreq(size, 1 / sample_rate)
 
 
-plot_single(x=xf, y=np.abs(yf),label='FFT', type=plot_type, y_scale='log', x_scale='log', y_label='Power', x_label='Frequency')
+plot_single(x=np.abs(xf.real), y=np.abs(yf.real),label='FFT', type=plot_type, y_scale='log', x_scale='log', y_label='Power', x_label='Frequency')
 
 # TODO: 3-dim transform

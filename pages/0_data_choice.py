@@ -42,6 +42,7 @@ st.write(f'number of points is {len(x)}')
 df = pd.DataFrame({
     'x': x,
     'y_orig': y,
+    'y': y,
 })
 st.write(f'x from {x[0]} to {x[-1]}')
 df.to_csv('pages/app_data/current_data.csv')
