@@ -92,21 +92,30 @@ def plot_samples(
     st.pyplot()
     
     
+    
 def plot_confidence_intervals(
     samples,
     x,
     original_fft=None,
 ):
     means = np.mean(np.abs(samples), axis=0)
+    # plt.plot(x, means)
+    # plt.yscale('log')
+    # plt.xscale('log')
+    # plt.show()
+    # st.pyplot()
     stds = np.std(np.abs(samples), axis=0)
     lower = means - 1.96 * stds
-    upper = means + 1.96 * stds
+    upper = means + 1.96 * stds    
     plt.figure(figsize=(15, 5))
-    plt.plot(x, np.abs(means), label='Mean Amplitude')
-    plt.fill_between(x, np.abs(lower), np.abs(upper), alpha=0.5, label='95% Confidence Interval')
+    plt.plot(x, np.full(x.shape, np.quantile(means, 0.95)), label='95% Threshold', color='red', linestyle='--')
+    plt.fill_between(x, np.abs(lower), np.abs(upper), label='$\pm 1.96 \sigma$', color='violet', alpha=0.3)
+    # plt.plot(x, upper, label='upp', color='violet')
+    # plt.plot(x, np.abs(means), label='Mean Amplitude')
+
     
     if (original_fft is not None):
-        plt.plot(x, np.abs(original_fft), color='red', label='Original')
+        plt.plot(x, np.abs(original_fft), color='blue', label='Original')
     
     plt.legend()
     plt.grid()
@@ -114,6 +123,29 @@ def plot_confidence_intervals(
     plt.xscale('log')
     plt.show()
     st.pyplot()
+    
+# def plot_confidence_intervals(
+#     samples,
+#     x,
+#     original_fft=None,
+# ):
+#     means = np.mean(np.abs(samples), axis=0)
+#     stds = np.std(np.abs(samples), axis=0)
+#     lower = means - 1.96 * stds
+#     upper = means + 1.96 * stds
+#     plt.figure(figsize=(15, 5))
+#     plt.plot(x, np.abs(means), label='Mean Amplitude')
+#     plt.fill_between(x, np.abs(lower), np.abs(upper), alpha=0.5, label='95% Confidence Interval')
+    
+#     if (original_fft is not None):
+#         plt.plot(x, np.abs(original_fft), color='red', label='Original')
+    
+#     plt.legend()
+#     plt.grid()
+#     plt.yscale('log')
+#     plt.xscale('log')
+#     plt.show()
+#     st.pyplot()
 
 # def plot_confidence_intervals(samples, x, original_fft=None):
 #     means = np.mean(np.abs(samples.real), axis=0)

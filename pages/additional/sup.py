@@ -77,9 +77,14 @@ def generate_samples(
     samples = []
     ffts = []
     for i in range(num_samples):
+        # noisy = y + np.random.normal(0, noise_std, y.shape[0])
+        # samples.append(noisy)
+        # ffts.append(sp.fft.fft(noisy.values))
         noisy = y + np.random.normal(0, noise_std, y.shape[0])
         samples.append(noisy)
-        ffts.append(sp.fft.fft(noisy.values))
+        fft_res = sp.fft.fft(noisy.values)
+        tmp = 2.0 / y.size * np.abs(fft_res[:y.size // 2])
+        ffts.append(tmp)
     return np.array(samples), np.array(ffts)
 
 
