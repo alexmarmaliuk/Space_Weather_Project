@@ -21,15 +21,12 @@ plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
 st.markdown('Note: Plotting lib influences only representation.')
 
 df = pd.read_csv('pages/app_data/current_data.csv')
-# st.write(df.columns)
 
 # Plot 1
 size = len(df.x)
-# st.write(size)
 yf = sp.fft.fft(np.array(df.y))
 duration = df['x'].iloc[-1] - df['x'].iloc[0]
-# st.write(duration)
-sample_rate = 24 * 60
+sample_rate = size
 xf = sp.fft.fftfreq(size, 1 / sample_rate)
 
 

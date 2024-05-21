@@ -31,6 +31,17 @@ st.write(selected_file)
 x, y = load_data(os.path.join(data_directory, selected_file))
 y = center_data(y)
 
+##########
+# st.markdown(r'$sin(2 \pi at) + sin(2 \pi bt)$.')
+# a = st.slider('a', min_value=0, max_value=150, value=50)
+# b = st.slider('b', min_value=0, max_value=150, value=120)
+
+# domain = np.linspace(0, 9, 1000)
+# f = lambda t : np.sin(2*np.pi*a*t) + np.sin(2*np.pi*b*t)
+# y = f(domain)
+# x = domain
+##########
+
 fig, ax = plt.subplots()
 ax.plot(x, y)
 ax.set_title(selected_file)

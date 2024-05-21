@@ -18,6 +18,7 @@ data = pd.read_csv(datapath)
 
 y = np.array(data.y)
 x = np.array(data.x)
+plt.figure(figsize=(15, 5))
 plt.plot(x,y)
 plt.show()
 st.pyplot()

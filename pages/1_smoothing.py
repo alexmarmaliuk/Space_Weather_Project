@@ -58,7 +58,7 @@ elif (selected_option == 'Exponential'):
 
     
 elif (selected_option == 'Savitzky-Golay'):
-    window_size = st.number_input("Enter window size:", min_value=1, max_value=1000, value=100, step=50)
+    window_size = st.number_input("Enter window size:", min_value=1, max_value=1000, value=100, step=10)
     ord = st.number_input("Enter polynom order:", min_value=1, max_value=5, value=3, step=1)
     data['y'] = savgol_filter(data.y_orig, window_length=window_size, polyorder=ord)
     st.write(f'type = {plot_type}')
