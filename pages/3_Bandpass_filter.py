@@ -44,4 +44,4 @@ low, high = st.slider(
 
 plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
 
-plot_single(data.x, bandpass(data.y, highcut=high, lowcut=low, fs=sr), f"{sr=}, {low=}, {high=}", plot_type)
+plot_single(data.x, bandpass(data.y, highcut=high, lowcut=low, fs=sr), f"{sr=}, {low=}, {high=}", plot_type, x_label='Time', y_label='Signal')

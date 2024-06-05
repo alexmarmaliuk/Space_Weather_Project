@@ -23,7 +23,7 @@ plt.plot(x,y)
 plt.show()
 st.pyplot()
 sr = st.number_input('Sample rate', value=22050, step=1000)
-fft_n = st.select_slider(label='FFT window',options=np.power(2, np.arange(15)), value=1024)
+fft_n = st.select_slider(label='FFT window',options=np.power(2, np.arange(25)), value=1024)
 
 # Compute the mel spectrogram
 S = librosa.feature.melspectrogram(y=y, sr=sr, n_fft=fft_n)
@@ -32,7 +32,8 @@ S = librosa.feature.melspectrogram(y=y, sr=sr, n_fft=fft_n)
 S_dB = librosa.power_to_db(S, ref=np.max)
 
 # Plotting
-plt.figure(figsize=(10, 4))
+plt.figure(figsize=(20, 4))
+# plt.figure(figsize=(10, 4))
 librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis='mel')
 plt.colorbar(format='%+2.0f dB')
 plt.title('Mel-frequency spectrogram')

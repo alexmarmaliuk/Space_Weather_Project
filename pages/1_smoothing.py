@@ -45,7 +45,7 @@ elif (selected_option == 'Exponential'):
 
     st.markdown(r'Parameter $$\alpha = factor \cdot 10^{\beta}$$.')
 
-    beta = st.slider(r"$$\beta$$", min_value=-5., max_value=5., step=0.05)
+    beta = st.slider(r"$$\beta$$", min_value=-10., max_value=0., step=0.05, value=-1.)
     factor = st.slider(r"$$factor$$", min_value=1., max_value=10., step=0.01)
     a = factor * 10**beta
 

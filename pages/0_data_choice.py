@@ -43,10 +43,12 @@ y = center_data(y)
 ##########
 
 fig, ax = plt.subplots()
+# plt.figure(figsize=(20, 8))
 ax.plot(x, y)
 ax.set_title(selected_file)
-plt.xlabel("Value")
-plt.ylabel("Time")
+fig.set_size_inches(20,8)
+plt.ylabel("Signal")
+plt.xlabel("Time")
 st.pyplot(fig)
 st.write(f'number of points is {len(x)}')
 

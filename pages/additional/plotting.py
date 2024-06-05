@@ -16,8 +16,8 @@ def plot_smooth(x, y, y_orig, label='Plot', type='pyplotly', fig_size=(16, 8)):
         # plt.figure(figsize=fig_size)
         plt.plot(x, y_orig, label='Noisy Data')
         plt.plot(x, y, label='Filtered Data')
-        plt.xlabel('X')
-        plt.ylabel('Y')
+        plt.xlabel('Time')
+        plt.ylabel('Signal')
         plt.legend()
         plt.title(label)
         plt.show()
@@ -29,8 +29,8 @@ def plot_smooth(x, y, y_orig, label='Plot', type='pyplotly', fig_size=(16, 8)):
         trace2 = go.Scatter(x=x, y=y_orig, mode='lines', name='Noisy Data')
         layout = go.Layout(
             title=label,
-            xaxis_title='X',
-            yaxis_title='Y',
+            xaxis_title='Time',
+            yaxis_title='Signal',
             width=width,
             height=height,
             legend_title="Legend"
@@ -88,6 +88,8 @@ def plot_samples(
     for sample in ys:
         plt.plot(x, sample, color=random_color_hex())
         
+    plt.ylabel('Signal')
+    plt.xlabel('Time')
     plt.show()
     st.pyplot()
     
@@ -119,6 +121,8 @@ def plot_confidence_intervals(
     
     plt.legend()
     plt.grid()
+    plt.ylabel('Power')
+    plt.xlabel('Time')
     plt.yscale('log')
     plt.xscale('log')
     plt.show()

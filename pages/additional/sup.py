@@ -68,19 +68,55 @@ def bandpass(y, fs, lowcut=500.0, highcut=1250.0):
     # highcut = 1250.0
     return butter_bandpass_filter(y, lowcut, highcut, fs = fs)
 
+
+def noise_psd(N, psd = lambda f: 1):
+        X_white = np.fft.rfft(np.random.randn(N))
+        S = psd(np.fft.rfftfreq(N))
+        S = S / np.sqrt(np.mean(S**2))
+        X_shaped = X_white * S
+        return np.fft.irfft(X_shaped)
+
+def PSDGenerator(f):
+    return lambda N: noise_psd(N, f)
+
+@PSDGenerator
+def white_noise(f):
+    return 1
+
+@PSDGenerator
+def blue_noise(f):
+    return np.sqrt(f)
+
+@PSDGenerator
+def violet_noise(f):
+    return f
+
+@PSDGenerator
+def brownian_noise(f):
+    return 1/np.where(f == 0, float('inf'), f)
+
+@PSDGenerator
+def pink_noise(f):
+    return 1/np.where(f == 0, float('inf'), np.sqrt(f))
+
 def generate_samples(
     x,
     y,
     num_samples=1000,
     noise_std=1,
+    noise_type='white'
 ):
     samples = []
     ffts = []
     for i in range(num_samples):
-        # noisy = y + np.random.normal(0, noise_std, y.shape[0])
-        # samples.append(noisy)
-        # ffts.append(sp.fft.fft(noisy.values))
-        noisy = y + np.random.normal(0, noise_std, y.shape[0])
+        noise_signal = {
+            'white': white_noise(y.shape[0]), 
+            'blue': blue_noise(y.shape[0]), 
+            'violet': violet_noise(y.shape[0]), 
+            'brownian': brownian_noise(y.shape[0]), 
+            'pink': pink_noise(y.shape[0]), 
+            }[noise_type]
+        noisy = y + noise_signal * noise_std#np.random.normal(0, noise_std, y.shape[0])
         samples.append(noisy)
         fft_res = sp.fft.fft(noisy.values)
         tmp = 2.0 / y.size * np.abs(fft_res[:y.size // 2])
