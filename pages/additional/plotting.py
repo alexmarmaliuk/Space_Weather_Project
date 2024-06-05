@@ -122,7 +122,7 @@ def plot_confidence_intervals(
     plt.legend()
     plt.grid()
     plt.ylabel('Power')
-    plt.xlabel('Time')
+    plt.xlabel('Frequencies')
     plt.yscale('log')
     plt.xscale('log')
     plt.show()
