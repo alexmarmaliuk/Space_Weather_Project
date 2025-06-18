@@ -1,35 +1,37 @@
-import streamlit as st
-import numpy as np
-import pandas as pd
-import altair as alt
+# import streamlit as st
+# import numpy as np
+# import pandas as pd
+# import altair as alt
 
-from pages.additional.sup import *
-from pages.additional.plotting import *
+# from pages.additional.sup import *
+# from pages.additional.plotting import *
 
-# Page title
-st.set_page_config(page_title='Interactive Geomagnetic Field Variations Data Explorer', page_icon='📊')
-st.title('📊 Demo')
+# # Page title
+# st.set_page_config(page_title='Interactive Geomagnetic Field Variations Data Explorer', page_icon='📊')
+# st.title('📊 Demo')
 
-with open(('pages/app_data/data_choice.txt'), 'r') as file:
-    data_choice = file.read()
+# with open(('pages/app_data/data_choice.txt'), 'r') as file:
+#     data_choice = file.read()
     
-st.markdown(f'#### Working with **{data_choice}** data.')
+# st.markdown(f'#### Working with **{data_choice}** data.')
 
-st.sidebar.header("FFT")
+# st.sidebar.header("FFT")
 
-plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
-st.markdown('Note: Plotting lib influences only representation.')
+# plot_type = st.selectbox('Plotting lib', ['plotly', 'pyplot'])
+# st.markdown('Note: Plotting lib influences only representation.')
 
-df = pd.read_csv('pages/app_data/current_data.csv')
+# df = pd.read_csv('pages/app_data/current_data.csv')
 
-# Plot 1
-size = len(df.x)
-yf = sp.fft.fft(np.array(df.y))
-duration = df['x'].iloc[-1] - df['x'].iloc[0]
-sample_rate = size
-xf = sp.fft.fftfreq(size, 1 / sample_rate)
+# # Plot 1
+# size = len(df.x)
+# yf = sp.fft.fft(np.array(df.y))
+# duration = df['x'].iloc[-1] - df['x'].iloc[0]
+# sample_rate = size
+# xf = sp.fft.fftfreq(size, 1 / sample_rate)
 
 
-plot_single(x=np.abs(xf.real), y=np.abs(yf.real),label='FFT', type=plot_type, y_scale='log', x_scale='log', y_label='Power', x_label='Frequency')
+# plot_single(x=np.abs(xf.real), y=np.abs(yf.real),label='FFT', type=plot_type, y_scale='log', x_scale='log', y_label='Power', x_label='Frequency')
 
-# TODO: 3-dim transform
+# # TODO: 3-dim transform
+
+

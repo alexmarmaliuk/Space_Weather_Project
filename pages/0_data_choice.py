@@ -8,10 +8,21 @@ from pages.additional.plotting import *
 
 
 
+# def list_files(directory):
+#     print(directory)
+#     filenames = os.listdir(directory)
+#     return filenames
+
+
 def list_files(directory):
-    print(directory)
-    filenames = os.listdir(directory)
-    return filenames
+    all_files = []
+    for root, dirs, files in os.walk(directory):
+        for filename in files:
+            # Create a relative path like 'subfolder/subfile'
+            rel_dir = os.path.relpath(root, directory)
+            rel_file = os.path.join(rel_dir, filename) if rel_dir != '.' else filename
+            all_files.append(rel_file)
+    return all_files
 
 
 data_directory = os.path.abspath("./data")
